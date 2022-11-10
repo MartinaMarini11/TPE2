@@ -1,6 +1,7 @@
 {include file="header.tpl"}
 <h1>Productos:</h1>
-<form action="editarProducto/{$producto->id}" method="POST" class="my-4"><table class="table table-success table-striped">        
+<form action="editarProducto/{$producto->id}" method="POST" class="my-4">
+<table class="table table-success table-striped">        
 
    
 
@@ -22,19 +23,19 @@
 {foreach from=$productos item=$producto }
 <div class="mb-3">
   <label for="type" class="form-label">Nombre</label>
-  <input type="text" class="form-control"  name="type" value="{$producto->nombre}">
+  <input type="text" class="form-control"  name="nombre" value="{$producto->nombre}">
 </div>
 <div class="mb-3">
   <label for="container" class="form-label">Descripcion</label>
-  <input type="text" class="form-control"  name="container" value="{$producto->descripcion}">
+  <input type="text" class="form-control"  name="descripcion" value="{$producto->descripcion}">
 </div>
 <div class="mb-3">
   <label for="stock" class="form-label">Marca</label>
-  <input type="text" class="form-control"  name="stock" value="{$producto->marca}">
+  <input type="text" class="form-control"  name="marca" value="{$producto->marca}">
 </div>
 <div class="mb-3">
   <label for="price" class="form-label">Precio</label>
-  <input type="text" class="form-control"  name="price" value="{$producto->precio}">  
+  <input type="text" class="form-control"  name="precio" value="{$producto->precio}">  
 {/foreach}
 <div class="mb-3">
 <label class="form-label">Seleccione una opcion:</label>

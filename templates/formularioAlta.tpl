@@ -1,3 +1,4 @@
+{if isset ($smarty.session.USER_EMAIL)}
 <h1>Agregar nuevo producto</h1>
 <form method="POST" action="agregarProducto">
     <label for="nombre">Nombre del producto:</label>
@@ -20,3 +21,4 @@
     <button type="submit" class="btn btn-success">Agregar</button>
     
 </form>
+{/if}

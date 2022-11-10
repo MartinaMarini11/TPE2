@@ -15,6 +15,7 @@ class ProductoController {
     }
 
     public function showProductos() {
+        session_start();
         $categoria = $this->model_categoria->obtenerTodoCategoria();
         $productos = $this->model->getAllProductos();
         $this->view->showProductos($productos,$categoria);
@@ -31,6 +32,10 @@ class ProductoController {
     
     }
    function agregarProducto(){
+
+        $autenticacionHelper = new AutenticacionHelper();
+        $autenticacionHelper->chequearLogueo();
+
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $marca = $_POST['marca'];
@@ -52,11 +57,11 @@ class ProductoController {
             header("Location: " . BASE_URL. 'productos');
         }
     }
-    function  formEditarProducto($id){
+    function  editarProducto($id){
         
-        $producto = $this->model->obtengoById($id);
+        $productos = $this->model->obtengoById($id);
      
-        $this->view->formEditarProducto($producto);
+        $this->view->editarProducto($productos);
 }
     
     function productoPorCategoria($id_categoria){
@@ -67,15 +72,17 @@ class ProductoController {
 }
 
     function borrarProducto($id) {
-        //$autenticacionHelper = new AutenticacionHelper();
-        //$autenticacionHelper->chequearLogeo();
-
+        
+        $autenticacionHelper = new AutenticacionHelper();
+        $autenticacionHelper->chequearLogueo();
+        
         $id=$this->model->borrarProductoById($id);
         $this->view->obtenerId($id);
         header("Location: " . BASE_URL);
     }
 
     function verDetalle($id){
+        session_start();
         $producto=$this->model->verDetalle($id);
         $this->view->verDetalle($producto);
 

@@ -7,11 +7,9 @@ class AutenticacionHelper {
      * lo redirige al login.
      */
     public function chequearLogueo() {
-        if (session_status() != PHP_SESSION_ACTIVE) {
             session_start();
-        }  
 
-        if (!isset($_SESSION['IS_LOGGED'])) {
+        if ((!isset($_SESSION['IS_LOGGED']))){
             header("Location: " . BASE_URL . 'acceso');
             die();
         }

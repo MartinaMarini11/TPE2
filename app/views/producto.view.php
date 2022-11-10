@@ -16,10 +16,10 @@ class ProductoView {
         // mostrar el tpl
         $this->smarty->display('productos.tpl');
     }
-    function editarProducto($producto, $categoria){
+    function editarProducto($productos, $categoria){
         $this->smarty->assign('categoria', $categoria); 
-        $this->smarty->assign('producto', $producto);
-        $this->smarty->display('templates/editarProducto.tpl');
+        $this->smarty->assign('productos', $productos);
+        $this->smarty->display('editarProducto.tpl');
     }
 
     function obtenerId($id){

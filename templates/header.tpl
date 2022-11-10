@@ -23,17 +23,16 @@
                     <a class="navbar-brand" href="categorias"> Categorias </a>
                 </li>
               </ul>
-              {if !isset($smarty.session.USER_ID)}
-                <a href="acceso"><button class="btn btn-outline-success me-2" type="button">Acesso</button></a>
+              {if isset($smarty.session.USER_EMAIL)}
+                <li class="nav-link dropdown">
+                  <a href="cerrarSesion"><button class="btn btn-outline-danger" type="button">Cerrar Sesion</button></a>
+                </li>
               {else}
-                <a href="cerrarSesion"><button class="btn btn-outline-light" type="button">Cerrar Sesion</button></a>
-                <span>
-                  <p style="color:#777777" class="user-select-none">Usuario: {$smarty.session.USER_EMAIL}</p>
-                </span>
+                <a href="acceso"><button class="btn btn-outline-success" type="button">Acceso </button></a>
               {/if}
             </div>
           </nav>
     </header>
 
-    <!-- inicio main container -->
+    
     <main class="container">

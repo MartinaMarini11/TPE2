@@ -27,6 +27,7 @@ class AutenticacionController {
         // verifico que el usuario existe y que las contraseñas son iguales
         if ($usuario && password_verify($password, $usuario->password)) {
 
+
             // inicio una session para este usuario
             session_start();
             $_SESSION['USER_ID'] = $usuario->id;

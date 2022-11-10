@@ -55,9 +55,6 @@ switch ($params[0]) {
         $id = $params[1];
         $productoController->insertarEdicionDelProducto($id);
        break;
-    case 'productoPorCategoria':
-        $muralsController->ProductoPorCategoria($params[1]);
-        break;
     case 'editarCategoria':
         $categoriaController-> mostrarFormEditar($params[1]);
         if($params[1]=="categorias"){

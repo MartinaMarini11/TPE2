@@ -16,6 +16,7 @@ class CategoriaController {
     }
 
       public function mostrarCategoria() {
+        session_start();
         $categorias= $this->model->obtenerTodoCategoria();
         $this->view->categorias($categorias);
     }
@@ -30,6 +31,10 @@ class CategoriaController {
 }
 
     function agregarCategoria() {
+        session_start();
+        $autenticacionHelper = new AutenticacionHelper();
+        $autenticacionHelper->chequearLogueo();
+        
         // TODO: validar entrada de datos
         $id = $_POST['id_categoria'];
         $categoria = $_POST['categoria'];
@@ -37,33 +42,16 @@ class CategoriaController {
              header("Location: " . BASE_URL. 'categorias');
     }
             
-    
 
-    
-    /*function  verEdiciondeCategoria($id){
-        $categoria = $this->model->obtenerRegistroCategoriaById2($id);
-        $this->view->mostrarEdicionDeCategoria($categoria);
-    }
-    function insertarEdicionDeCategoria(){
-        if((isset($_POST['categoria']))&&!empty($_POST['categoria'])){      
-            $categoria = $_POST['categoria'];
-    
-            $this->model->insertarEdicionDeCategoria($categoria);
-            header("Location: " . BASE_URL. 'categorias');
-        }
-    }*/
-
-    function mostrarFormEditar($id)
-    {   
-       // $this->helper->checkLoggedIn();
+    function mostrarFormEditar($id){   
+       
         $producto = $this->modelProducto->getAllProductos();
         $categoria =  $this->model->obtenerLaCategoria($id);
         $this->view->mostrarEditCategoria($categoria, $producto);
 
     }
 
-    function editarCategoria($id)
-    {   
+    function editarCategoria($id){   
     
         if (!empty($_POST['categoria'])) {
             $categoria = $_POST['categoria'];
@@ -75,6 +63,10 @@ class CategoriaController {
     }
 
     function eliminarCategoria($id){
+
+        $autenticacionHelper = new AutenticacionHelper();
+        $autenticacionHelper->chequearLogueo();
+        
         $this->model->eliminarCategoria($id);
         header("Location: " . BASE_URL . 'categorias');
     }

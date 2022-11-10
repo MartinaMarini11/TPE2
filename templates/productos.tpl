@@ -13,8 +13,10 @@
     <th>Descripcion</th>
     <th>Marca</th>
     <th>Precio</th>
-    <th>Borrar</th>
-    <th>Editar</th>
+    {if isset ($smarty.session.USER_EMAIL)}
+        <th>Borrar</th>
+        <th>Editar</th>
+    {/if}
 </tr>
 </thead>
 
@@ -28,9 +30,10 @@
                     <td><a href='verDetalle/{$producto->id}'>Ver detalle </a></td>
                     <td>{$producto->marca}</td>
                     <td>{$producto->precio}</td>
-                    <td><a class="btn btn-danger" href='borrar/{$producto->id}'> Borrar</a></td>
-                    <td><a class="btn btn-warning" href='editarProducto/{$producto->id}'> Editar</a></td>
-                    
+                    {if isset ($smarty.session.USER_EMAIL)}
+                        <td><a class="btn btn-danger" href='borrar/{$producto->id}'> Borrar</a></td>
+                        <td><a class="btn btn-warning" href='editarProducto/{$producto->id}'> Editar</a></td>
+                    {/if}
                 </tr>            
     {/foreach}
 </tbody>
